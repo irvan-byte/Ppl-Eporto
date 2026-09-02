@@ -4,6 +4,7 @@ import { fileURLToPath, URL } from 'node:url';
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: '/Ppl-Eporto/',
   plugins: [react()],
   resolve: {
     alias: {
