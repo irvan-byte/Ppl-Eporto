@@ -118,6 +118,13 @@ export default function Navbar() {
               </div>
             ))}
           </div>
+{/* Back to main portfolio */}
+<a
+  href="https://irvan-byte.github.io/eportfolio-ppg-irvan/"
+  className="hidden lg:inline-flex items-center gap-1.5 ml-3 px-3 py-2 rounded-md text-sm font-semibold text-slate-700 border border-slate-200 hover:text-cyan-700 hover:bg-cyan-50 hover:border-cyan-200 transition-colors"
+>
+  ← E-Portfolio PPG
+</a>
 
           {/* Mobile toggle */}
           <button
