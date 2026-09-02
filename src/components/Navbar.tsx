@@ -41,7 +41,6 @@ const MAIN_PORTFOLIO_URL =
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [dropdownOpen, setDropdownOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -55,32 +54,29 @@ export default function Navbar() {
 
   useEffect(() => {
     setMobileOpen(false);
-    setDropdownOpen(false);
   }, [location.pathname]);
 
   return (
     <header
       className={`sticky top-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-white/90 backdrop-blur-md shadow-sm border-b border-slate-200'
+          ? 'bg-white/95 backdrop-blur-md shadow-sm border-b border-slate-200'
           : 'bg-white border-b border-slate-200'
       }`}
     >
       <nav className="container-academic">
-        <div className="flex items-center justify-between h-16 gap-4">
+        <div className="flex items-center justify-between h-16 gap-3">
 
-          {/* =====================================================
-              LOGO
-          ====================================================== */}
+          {/* Logo */}
           <Link to="/" className="flex items-center gap-2.5 shrink-0">
-            <div className="w-9 h-9 rounded-lg bg-cyan-600 flex items-center justify-center">
+            <div className="w-9 h-9 rounded-lg bg-cyan-600 flex items-center justify-center shrink-0">
               <GraduationCap
                 className="w-5 h-5 text-white"
                 strokeWidth={2.5}
               />
             </div>
 
-            <div className="hidden sm:block leading-tight">
+            <div className="hidden sm:block leading-tight whitespace-nowrap">
               <div className="text-sm font-bold text-slate-900">
                 E-Portfolio PPL
               </div>
@@ -90,19 +86,19 @@ export default function Navbar() {
             </div>
           </Link>
 
-          {/* =====================================================
-              DESKTOP NAVIGATION
-          ====================================================== */}
-          <div className="hidden lg:flex items-center gap-0.5">
+          {/* Desktop Navigation */}
+          <div className="hidden lg:flex items-center gap-0.5 min-w-0">
             {navItems.map((item) => (
-              <div key={item.path} className="relative group">
-
+              <div
+                key={item.path}
+                className="relative group shrink-0"
+              >
                 {item.children ? (
                   <>
                     <NavLink
                       to={item.path}
                       className={({ isActive }) =>
-                        `flex items-center gap-1 px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                        `flex items-center gap-1 px-2.5 py-2 rounded-md text-[13px] font-medium whitespace-nowrap transition-colors ${
                           isActive
                             ? 'text-cyan-700 bg-cyan-50'
                             : 'text-slate-600 hover:text-cyan-700 hover:bg-cyan-50'
@@ -110,9 +106,10 @@ export default function Navbar() {
                       }
                     >
                       {item.label}
-                      <ChevronDown className="w-3.5 h-3.5" />
+                      <ChevronDown className="w-3.5 h-3.5 shrink-0" />
                     </NavLink>
 
+                    {/* Dropdown */}
                     <div className="absolute left-0 top-full pt-1 invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-200">
                       <div className="bg-white rounded-lg shadow-lg border border-slate-200 py-1.5 min-w-[180px]">
                         {item.children.map((child) => (
@@ -120,7 +117,7 @@ export default function Navbar() {
                             key={child.path}
                             to={child.path}
                             className={({ isActive }) =>
-                              `block px-4 py-2 text-sm transition-colors ${
+                              `block px-4 py-2 text-sm whitespace-nowrap transition-colors ${
                                 isActive
                                   ? 'text-cyan-700 bg-cyan-50 font-medium'
                                   : 'text-slate-600 hover:text-cyan-700 hover:bg-slate-50'
@@ -137,7 +134,7 @@ export default function Navbar() {
                   <NavLink
                     to={item.path}
                     className={({ isActive }) =>
-                      `px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                      `block px-2.5 py-2 rounded-md text-[13px] font-medium whitespace-nowrap transition-colors ${
                         isActive
                           ? 'text-cyan-700 bg-cyan-50'
                           : 'text-slate-600 hover:text-cyan-700 hover:bg-cyan-50'
@@ -147,31 +144,23 @@ export default function Navbar() {
                     {item.label}
                   </NavLink>
                 )}
-
               </div>
             ))}
 
-            {/* =================================================
-                BACK TO MAIN PORTFOLIO
-            ================================================== */}
+            {/* Back to Main Portfolio */}
             <a
               href={MAIN_PORTFOLIO_URL}
-              title="Kembali ke E-Portfolio PPG utama"
-              className="ml-2 inline-flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-semibold text-cyan-700 bg-cyan-50 border border-cyan-200 hover:bg-cyan-100 hover:border-cyan-300 transition-all duration-200 whitespace-nowrap group"
+              title="Kembali ke E-Portfolio PPG"
+              className="ml-2 shrink-0 inline-flex items-center gap-1.5 px-3 py-2 rounded-lg text-[13px] font-semibold text-cyan-700 bg-cyan-50 border border-cyan-200 hover:bg-cyan-100 hover:border-cyan-300 transition-colors whitespace-nowrap"
             >
-              <ArrowLeft
-                className="w-4 h-4 transition-transform duration-200 group-hover:-translate-x-0.5"
-              />
-
+              <ArrowLeft className="w-4 h-4 shrink-0" />
               <span>Kembali ke PPG</span>
             </a>
           </div>
 
-          {/* =====================================================
-              MOBILE TOGGLE
-          ====================================================== */}
+          {/* Mobile Toggle */}
           <button
-            className="lg:hidden p-2 rounded-md text-slate-600 hover:bg-slate-100"
+            className="lg:hidden p-2 rounded-md text-slate-600 hover:bg-slate-100 shrink-0"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Toggle menu"
           >
@@ -181,20 +170,16 @@ export default function Navbar() {
               <Menu className="w-6 h-6" />
             )}
           </button>
-
         </div>
       </nav>
 
-      {/* =========================================================
-          MOBILE MENU
-      ========================================================== */}
+      {/* Mobile Menu */}
       {mobileOpen && (
         <div className="lg:hidden border-t border-slate-200 bg-white max-h-[calc(100vh-4rem)] overflow-y-auto">
           <div className="container-academic py-3 space-y-0.5">
 
             {navItems.map((item) => (
               <div key={item.path}>
-
                 <NavLink
                   to={item.path}
                   className={({ isActive }) =>
@@ -227,13 +212,10 @@ export default function Navbar() {
                     ))}
                   </div>
                 )}
-
               </div>
             ))}
 
-            {/* =================================================
-                BACK TO MAIN PORTFOLIO - MOBILE
-            ================================================== */}
+            {/* Back to Main Portfolio - Mobile */}
             <div className="pt-3 mt-2 border-t border-slate-200">
               <a
                 href={MAIN_PORTFOLIO_URL}
