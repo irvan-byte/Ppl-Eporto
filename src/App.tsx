@@ -17,7 +17,7 @@ import NotFound from '@/pages/NotFound';
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/Ppl-Eporto">
       <ScrollToTop />
       <div className="min-h-screen flex flex-col bg-slate-50">
         <Navbar />
