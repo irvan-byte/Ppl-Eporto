@@ -1,6 +1,12 @@
 import { NavLink, Link, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { Menu, X, ChevronDown, GraduationCap } from 'lucide-react';
+import {
+  Menu,
+  X,
+  ChevronDown,
+  GraduationCap,
+  ArrowLeft,
+} from 'lucide-react';
 
 interface NavItem {
   label: string;
@@ -29,6 +35,9 @@ const navItems: NavItem[] = [
   { label: 'Kontak', path: '/kontak' },
 ];
 
+const MAIN_PORTFOLIO_URL =
+  'https://irvan-byte.github.io/eportfolio-ppg-irvan/';
+
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -37,6 +46,7 @@ export default function Navbar() {
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
+
     onScroll();
     window.addEventListener('scroll', onScroll);
 
@@ -57,9 +67,11 @@ export default function Navbar() {
       }`}
     >
       <nav className="container-academic">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-16 gap-4">
 
-          {/* Logo */}
+          {/* =====================================================
+              LOGO
+          ====================================================== */}
           <Link to="/" className="flex items-center gap-2.5 shrink-0">
             <div className="w-9 h-9 rounded-lg bg-cyan-600 flex items-center justify-center">
               <GraduationCap
@@ -78,7 +90,9 @@ export default function Navbar() {
             </div>
           </Link>
 
-          {/* Desktop nav */}
+          {/* =====================================================
+              DESKTOP NAVIGATION
+          ====================================================== */}
           <div className="hidden lg:flex items-center gap-0.5">
             {navItems.map((item) => (
               <div key={item.path} className="relative group">
@@ -136,17 +150,26 @@ export default function Navbar() {
 
               </div>
             ))}
+
+            {/* =================================================
+                BACK TO MAIN PORTFOLIO
+            ================================================== */}
+            <a
+              href={MAIN_PORTFOLIO_URL}
+              title="Kembali ke E-Portfolio PPG utama"
+              className="ml-2 inline-flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-semibold text-cyan-700 bg-cyan-50 border border-cyan-200 hover:bg-cyan-100 hover:border-cyan-300 transition-all duration-200 whitespace-nowrap group"
+            >
+              <ArrowLeft
+                className="w-4 h-4 transition-transform duration-200 group-hover:-translate-x-0.5"
+              />
+
+              <span>Kembali ke PPG</span>
+            </a>
           </div>
 
-          {/* Back to main portfolio - Desktop */}
-          <a
-            href="https://irvan-byte.github.io/eportfolio-ppg-irvan/"
-            className="hidden lg:inline-flex items-center gap-1.5 ml-3 px-3 py-2 rounded-md text-sm font-semibold text-slate-700 border border-slate-200 hover:text-cyan-700 hover:bg-cyan-50 hover:border-cyan-200 transition-colors"
-          >
-            ← E-Portfolio PPG
-          </a>
-
-          {/* Mobile toggle */}
+          {/* =====================================================
+              MOBILE TOGGLE
+          ====================================================== */}
           <button
             className="lg:hidden p-2 rounded-md text-slate-600 hover:bg-slate-100"
             onClick={() => setMobileOpen(!mobileOpen)}
@@ -162,7 +185,9 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* Mobile menu */}
+      {/* =========================================================
+          MOBILE MENU
+      ========================================================== */}
       {mobileOpen && (
         <div className="lg:hidden border-t border-slate-200 bg-white max-h-[calc(100vh-4rem)] overflow-y-auto">
           <div className="container-academic py-3 space-y-0.5">
@@ -206,14 +231,19 @@ export default function Navbar() {
               </div>
             ))}
 
-            {/* Back to main portfolio - Mobile */}
-            <a
-              href="https://irvan-byte.github.io/eportfolio-ppg-irvan/"
-              onClick={() => setMobileOpen(false)}
-              className="flex items-center gap-2 mt-3 px-3 py-3 rounded-md text-sm font-semibold text-cyan-700 bg-cyan-50 border border-cyan-100 hover:bg-cyan-100 transition-colors"
-            >
-              ← Kembali ke E-Portfolio PPG
-            </a>
+            {/* =================================================
+                BACK TO MAIN PORTFOLIO - MOBILE
+            ================================================== */}
+            <div className="pt-3 mt-2 border-t border-slate-200">
+              <a
+                href={MAIN_PORTFOLIO_URL}
+                onClick={() => setMobileOpen(false)}
+                className="flex items-center justify-center gap-2 px-4 py-3 rounded-lg text-sm font-bold text-white bg-cyan-600 hover:bg-cyan-700 transition-colors shadow-sm"
+              >
+                <ArrowLeft className="w-4 h-4" />
+                Kembali ke E-Portfolio PPG
+              </a>
+            </div>
 
           </div>
         </div>
