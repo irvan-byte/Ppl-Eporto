@@ -46,17 +46,4 @@ export const utsData: UtsData = {
     deskripsi: 'Video pelaksanaan praktik mengajar mandiri dari rancangan pembelajaran yang dipilih.',
     tanggalPelaksanaan: '[Tanggal Pelaksanaan]',
   },
-  analisis: {
-    label: 'Mengapa produk ini dipilih sebagai produk terbaik?',
-    items: [
-      { label: 'Alasan pemilihan', placeholder: '[Tuliskan alasan pemilihan produk ini...]' },
-      { label: 'Kekuatan rancangan', placeholder: '[Tuliskan kekuatan rancangan...]' },
-      { label: 'Kesesuaian antara rancangan dan pelaksanaan', placeholder: '[Tuliskan kesesuaian rancangan dan pelaksanaan...]' },
-      { label: 'Keberhasilan pelaksanaan', placeholder: '[Tuliskan keberhasilan pelaksanaan...]' },
-      { label: 'Respons peserta didik', placeholder: '[Tuliskan respons peserta didik...]' },
-      { label: 'Kendala', placeholder: '[Tuliskan kendala yang ditemukan...]' },
-      { label: 'Perbaikan', placeholder: '[Tuliskan perbaikan yang diperlukan...]' },
-      { label: 'Pembelajaran yang diperoleh', placeholder: '[Tuliskan pembelajaran yang diperoleh...]' },
-    ],
-  },
 };
